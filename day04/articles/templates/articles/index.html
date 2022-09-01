@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX PAGE</h1>
+  <button type="button" class="btn btn-primary">{{ name }}</button>
+  <a href="{% url 'articles:throw' %}">던지기</a>
+  <a href="{% url 'articles:catch' %}">받기</a>
+  <a href="{% url 'articles:main' %}">메인</a>
+  <a href="{% url 'articles:new' %}">등록</a>
+  <hr>
+  <p>전체출력</p>
+  <p>fruit list: {{ fruits}} </p>
+  <p> hate list: {{ hate}} </p>
+  <hr>
+  <p> just show</p>
+  {% for fruit in fruits %}
+  <p> {{fruit}}</p>
+  {% endfor %}
+  <hr>
+  <p> 싫어하는 과일 출력 안하기</p>
+  {% for fruit in fruits %}
+    {% if fruit not in hate %}
+      <p>{{fruit}}</p>
+    {% endif %}
+  {% endfor %}
+  <hr>
+  <p>2글자 이상인 과일만 출력하기</p>
+  {% for fruit in fruits %}
+    {% if fruit not in hate %}
+      {% if fruit|length > 1 %}
+        <p>{{fruit}}</p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <hr>
+  <p>3글자 이하인 과일만 출력하기</p>
+  {% for fruit in fruits %}
+    {% if fruit not in hate %}
+      {% if fruit|length > 1 %}
+        <p>{{fruit|truncatechars:3}}</p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+{% endblock content %}
