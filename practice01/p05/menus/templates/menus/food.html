@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for food in foods %}
+        <p>{{ food }}</p>
+    {% endfor %}
+    <form action="{% url 'menus:receipt' %}" method="GET">
+        <label for="food_order">주문란:</label>
+        <input type="text" name="food_order" id="food_order">
+        <input type="submit" value="주문하기">
+    </form>
+{% endblock content %}
