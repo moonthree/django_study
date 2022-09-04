@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: end; margin-right: 10%">새 글 작 성</h1>
+<form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
+    {# DB에서 필수적으로 필요한 내용 : title, content #}
+    <label for="title">작성자: </label>
+    <input type="text" name="title" id="title">
+    <br>
+    <label for="content">내용: </label>
+    <textarea name="content"></textarea>
+    <br>
+    <input type="submit" value="제출">
+</form>
+<hr>
+<a href="{% url 'articles:index' %}">[뒤로가기]</a>
+{% endblock content %}
