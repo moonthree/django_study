@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'articles',
     'pages',
     # 2. Third party apps
-    
     # 3. Django apps
     'django.contrib.admin',
     'django.contrib.auth',

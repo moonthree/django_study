@@ -19,7 +19,7 @@ def throw(request):
 
 def catch(request):
   message = request.GET.get('message')
-
+  print(message)
   context = {
     'message': message,
   }
