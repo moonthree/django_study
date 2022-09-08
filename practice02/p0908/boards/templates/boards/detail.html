@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <h2>{{ board.pk }}번째 글입니다.</h2>
+  <hr>
+  <p>제목 : {{ board.title }}</p>
+  <p>내용 : {{ board.content }}</p>
+  <p>작성 시각 : {{ board.created_at }}</p>
+  <p>수정 시각 : {{ board.updated_at }}</p>
+  <a href="{% url 'boards:update' board.pk %}">UPDATE</a>
+  <form action="{% url 'boards:delete' board.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
+  <hr>
+  <a href="{% url 'boards:index' %}">뒤로가기</a>
+{% endblock content %}
